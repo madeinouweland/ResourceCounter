@@ -1,0 +1,46 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" x:Class="ResourceCounter.MainWindow"
+    Title="ResourceCounter :: 2011 Loek van den Ouweland" 
+    Height="539" 
+    Width="948" 
+    DataContext="{Binding Source={StaticResource MainViewModelDataSource}}">
+	<Window.Background>
+		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#FF4B4B4B" Offset="0"/>
+			<GradientStop Color="#FF1F1F1F" Offset="1"/>
+			<GradientStop Color="#FF1B1B1B" Offset="0.47"/>
+		</LinearGradientBrush>
+	</Window.Background>
+    <Grid>
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="70.048"/>
+    		<RowDefinition/>
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition/>
+    		<ColumnDefinition Width="202.244"/>
+    	</Grid.ColumnDefinitions>
+    	<Rectangle Fill="#FFD0D0D0" Stroke="Black" Grid.ColumnSpan="2" Margin="10"/>
+    	<TextBox TextWrapping="Wrap" Text="{Binding RootPath}" VerticalAlignment="Top" Height="24.04" Margin="10,26.96,10,0" Grid.Row="1"/>
+    	<TextBlock TextWrapping="Wrap" Text="Path to Silverlight or WPF project" VerticalAlignment="Top" Margin="10,8.952,47,0" FontWeight="Bold" Foreground="White" Grid.Row="1"/>
+    	<Button Content="Analyse" Grid.Column="1" Margin="9.8,26.96,10,0" Command="{Binding AnalyseCommand}" Height="24.04" VerticalAlignment="Top" Grid.Row="1"/>
+        <DataGrid Grid.Row="1" Margin="10,62,10,10" AutoGenerateColumns="False" ItemsSource="{Binding ApplicationResources}">
+    		<DataGrid.Columns>
+    			<DataGridTextColumn Binding="{Binding Key}" Header="Key"/>
+    			<DataGridTextColumn Binding="{Binding DefinedInXamlFile.FileName}" Header="Defined in file"/>
+    			<DataGridTextColumn Binding="{Binding Occurrences}" Header="Used in file(s)"/>
+            </DataGrid.Columns>
+    	</DataGrid>
+    	<TextBlock Margin="20,19,0,0" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Grid.ColumnSpan="2" Text="This app displays a list of StaticResources in XAML files by looking at 'x:Key' occurrences."/>
+    	<TextBlock Grid.Column="1" Margin="11.774,59.052,0,0" Grid.Row="1" Text="Total StaticResources:" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" TextAlignment="Right"/>
+        <TextBlock Grid.Column="1" Margin="143.774,60,0,0" Grid.Row="1" Text="{Binding ApplicationResources.Count}" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBlock Grid.Column="1" Margin="89.774,80.052,0,0" Grid.Row="1" Text="Unused:" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" TextAlignment="Right"/>
+        <TextBlock Grid.Column="1" Margin="143.774,81,0,0" Grid.Row="1" Text="{Binding UnusedCount}" VerticalAlignment="Top" HorizontalAlignment="Left" Foreground="White"/>
+        <TextBlock Margin="20,37.128,0,0" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Top" HorizontalAlignment="Left" d:LayoutOverrides="GridBox" Text="The list indicates where the resources are used in the project."/>
+        <TextBlock Margin="9.8,175,0,10" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="This software is 'as is'. It crashes spectacularly when pointed at a non-existing folder. It does not write anything to your project but still...handle with care. Use at your own risk!" Grid.Column="1" Grid.Row="1"/>
+    </Grid>
+</Window>
