@@ -63,18 +63,24 @@
                              Margin="5"
                              Visibility="{Binding Path=IsBusy, Converter={StaticResource _booleanToVisibilityConverter}}" />
 
-                <StackPanel Margin="5" Orientation="Horizontal" >
+                <StackPanel Margin="5,0,5,5">
+                    <StackPanel  Orientation="Horizontal" >
 
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <TextBlock Text="Total StaticResources:"      Margin="3" />
-                        <TextBlock Text="{Binding ApplicationResourcesFlat.Count}"    Margin="3" FontWeight="Bold" FontSize="16" />
-                     </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+                            <TextBlock Text="Total StaticResources:"      Margin="3" />
+                            <TextBlock Text="{Binding ApplicationResourcesFlat.Count}"    Margin="3" FontWeight="Bold" FontSize="16" />
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="10">
-                        <TextBlock Text="Unused:"     Margin="3" />
-                        <TextBlock Text="{Binding UnusedCount}"    Margin="3" FontWeight="Bold" FontSize="16" Foreground="Red"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
+                            <TextBlock Text="Unused:"     Margin="3" />
+                            <TextBlock Text="{Binding UnusedCount}"    Margin="3" FontWeight="Bold" FontSize="16" Foreground="#FF4C4C"/>
+                        </StackPanel>
                     </StackPanel>
+                    <TextBlock FontSize="12"  Margin="15,5,5,0">
+                        <Run Text="Unused results found by using a regex, and might be incorrect!" Foreground="#FF4C4C" />
+                    </TextBlock>
                 </StackPanel>
+               
             </StackPanel>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -150,12 +156,13 @@
 
         <StatusBar Grid.Row="2" >
             <StatusBarItem>
-                <TextBlock FontSize="8"
+                <TextBlock FontSize="10"
                            DockPanel.Dock="Bottom"
                            HorizontalAlignment="Left">
                     <Run Text="This software is 'as is'. It crashes spectacularly when pointed at a non-existing folder. It does not write anything to your project but still...handle with care. Use at your own risk!"
-                         Foreground="Red" />
+                         Foreground="#FF4C4C" />
                     <LineBreak />
+                    
                     <Run Text="2011 Loek van den Ouweland"
                          Foreground="Black" 
                          FontSize="10"/>
