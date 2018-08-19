@@ -27,3 +27,8 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+/ResourceCounter/.vs/*
+/ResourceCounter/.vs/ResourceCounter/v15/Server/sqlite3/db.lock
+/ResourceCounter/.vs/ResourceCounter/v15/Server/sqlite3/storage.ide
+/ResourceCounter/.vs/ResourceCounter/v15/Server/sqlite3/storage.ide-shm
+/ResourceCounter/.vs/ResourceCounter/v15/Server/sqlite3/storage.ide-wal
